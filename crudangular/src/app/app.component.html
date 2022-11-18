@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8 mt-4 align-items-center justify-content-center">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action" *ngFor="let employee of employeeArray"
+          [class.active]="employee==selectedEmployee">
+          <span class="badge bg-primary"
+            (click)="openForEdit(employee)">{{employee.id}}</span>-{{employee.name}}-{{employee.country}}
+
+        </li>
+      </ul>
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            Inserta un nuevo empleado
+          </div>
+          <div class="form-group">
+            <input type="text" [(ngModel)]="selectedEmployee.name" placeholder="Insertar nombre" class="form-control">
+            <input type="text" [(ngModel)]="selectedEmployee.country" placeholder="Insertar país" class="form-control">
+
+          </div>
+          <br>
+          <div class="btn-group" role="group" aria-label="Basic example">
+
+            <button (click)="addOrEdit()" class="btn btn-primary">Agregar</button>
+            <button (click)="eliminar()" *ngIf="selectedEmployee.id !==0" class="btn btn-danger">Eliminar</button>
+          </div>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>
